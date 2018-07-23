@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20181.18.0510.1418                               -->
+<workbook original-version='18.1' source-build='2018.1.1 (20181.18.0510.1418)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column alias='sum(quantityordered)' caption='sum of quantityordered or sum of orderlinenumber' datatype='real' name='[Parameter 1]' param-domain-type='list' role='measure' type='quantitative' value='1.0'>
+        <calculation class='tableau' formula='1.0' />
+        <aliases>
+          <alias key='1.0' value='sum(quantityordered)' />
+          <alias key='2.0' value='sum(orderlinenumber)' />
+        </aliases>
+        <members>
+          <member alias='sum(quantityordered)' value='1.0' />
+          <member alias='sum(orderlinenumber)' value='2.0' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='public' inline='true' name='federated.00dhxb505j8lxd1fnw29v0kzawal' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='mysql.0awr5f40te19x019lq5560f3j3sh'>
+            <connection class='mysql' dbname='public' odbc-native-protocol='' one-time-sql='' port='3306' server='localhost' source-charset='' username='root' />
+          </named-connection>
+        </named-connections>
+        <relation connection='mysql.0awr5f40te19x019lq5560f3j3sh' name='orderdetails' table='[TS20_01].[orderdetails]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>ORDERNUMBER</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ORDERNUMBER]</local-name>
+            <parent-name>[TS20_01].[orderdetails]</parent-name>
+            <remote-alias>ORDERNUMBER</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PRODUCTCODE</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[PRODUCTCODE]</local-name>
+            <parent-name>[TS20_01].[orderdetails]</parent-name>
+            <remote-alias>PRODUCTCODE</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>QUANTITYORDERED</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[QUANTITYORDERED]</local-name>
+            <parent-name>[TS20_01].[orderdetails]</parent-name>
+            <remote-alias>QUANTITYORDERED</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PRICEEACH</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[PRICEEACH]</local-name>
+            <parent-name>[TS20_01].[orderdetails]</parent-name>
+            <remote-alias>PRICEEACH</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <scale>0</scale>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ORDERLINENUMBER</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[ORDERLINENUMBER]</local-name>
+            <parent-name>[TS20_01].[orderdetails]</parent-name>
+            <remote-alias>ORDERLINENUMBER</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_SMALLINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SSHORT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='calc of sales' datatype='integer' name='[Calculation_268527139864940544]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='case [Parameters].[Parameter 1]&#13;&#10;when 1 then sum([QUANTITYORDERED])&#13;&#10;when 2 then sum([ORDERLINENUMBER])&#13;&#10;END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Orderlinenumber' datatype='integer' name='[ORDERLINENUMBER]' role='measure' type='quantitative' />
+      <column caption='Ordernumber' datatype='integer' name='[ORDERNUMBER]' role='measure' type='quantitative' />
+      <column caption='Priceeach' datatype='integer' name='[PRICEEACH]' role='measure' type='quantitative' />
+      <column caption='Productcode' datatype='string' name='[PRODUCTCODE]' role='dimension' type='nominal' />
+      <column caption='Quantityordered' datatype='integer' name='[QUANTITYORDERED]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.481595' measure-ordering='alphabetic' measure-percentage='0.45092' parameter-percentage='0.0674847' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column alias='sum(quantityordered)' caption='sum of quantityordered or sum of orderlinenumber' datatype='real' name='[Parameter 1]' param-domain-type='list' role='measure' type='quantitative' value='1.0'>
+          <calculation class='tableau' formula='1.0' />
+          <aliases>
+            <alias key='1.0' value='sum(quantityordered)' />
+            <alias key='2.0' value='sum(orderlinenumber)' />
+          </aliases>
+        </column>
+      </datasource-dependencies>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='TS20_01'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='public' name='federated.00dhxb505j8lxd1fnw29v0kzawal' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column alias='sum(quantityordered)' caption='sum of quantityordered or sum of orderlinenumber' datatype='real' name='[Parameter 1]' param-domain-type='list' role='measure' type='quantitative' value='1.0'>
+              <calculation class='tableau' formula='1.0' />
+              <aliases>
+                <alias key='1.0' value='sum(quantityordered)' />
+                <alias key='2.0' value='sum(orderlinenumber)' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.00dhxb505j8lxd1fnw29v0kzawal'>
+            <column caption='calc of sales' datatype='integer' name='[Calculation_268527139864940544]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='case [Parameters].[Parameter 1]&#13;&#10;when 1 then sum([QUANTITYORDERED])&#13;&#10;when 2 then sum([ORDERLINENUMBER])&#13;&#10;END' />
+            </column>
+            <column caption='Orderlinenumber' datatype='integer' name='[ORDERLINENUMBER]' role='measure' type='quantitative' />
+            <column caption='Productcode' datatype='string' name='[PRODUCTCODE]' role='dimension' type='nominal' />
+            <column caption='Quantityordered' datatype='integer' name='[QUANTITYORDERED]' role='measure' type='quantitative' />
+            <column-instance column='[PRODUCTCODE]' derivation='None' name='[none:PRODUCTCODE:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_268527139864940544]' derivation='User' name='[usr:Calculation_268527139864940544:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.00dhxb505j8lxd1fnw29v0kzawal].[usr:Calculation_268527139864940544:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[Parameters].[Parameter 1]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.00dhxb505j8lxd1fnw29v0kzawal].[usr:Calculation_268527139864940544:qk] + [Parameters].[Parameter 1])</rows>
+        <cols>[federated.00dhxb505j8lxd1fnw29v0kzawal].[none:PRODUCTCODE:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='TS20_01'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='list' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.00dhxb505j8lxd1fnw29v0kzawal].[none:PRODUCTCODE:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='TS20_01' width='179'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

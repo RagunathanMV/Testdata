@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20181.18.0510.1418                               -->
+<workbook original-version='18.1' source-build='2018.1.1 (20181.18.0510.1418)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='localhost' inline='true' name='federated.1ioty7g1i9ia2814nveju0hkoaal' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='mysql.1j2rcbl1bqjg4h1g64zuv1ajwy9m'>
+            <connection class='mysql' dbname='sys' odbc-native-protocol='' one-time-sql='' port='3306' server='localhost' source-charset='' username='root' />
+          </named-connection>
+        </named-connections>
+        <relation connection='mysql.1j2rcbl1bqjg4h1g64zuv1ajwy9m' name='Custom SQL Query' type='text'>SELECT user1.user,user1.age,user2.os FROM user1,user2 &#13;&#10;WHERE user1.user=user2.user</relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>user</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[user]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>user</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[age]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>age</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>os</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[os]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>os</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.502075' measure-ordering='alphabetic' measure-percentage='0.497925' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='TS19_01'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='localhost' name='federated.1ioty7g1i9ia2814nveju0hkoaal' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ioty7g1i9ia2814nveju0hkoaal'>
+            <column datatype='integer' name='[age]' role='measure' type='quantitative' />
+            <column-instance column='[os]' derivation='None' name='[none:os:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user]' derivation='None' name='[none:user:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[os]' role='dimension' type='nominal' />
+            <column-instance column='[age]' derivation='Sum' name='[sum:age:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.1ioty7g1i9ia2814nveju0hkoaal].[none:os:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.60000002384185791' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1ioty7g1i9ia2814nveju0hkoaal].[sum:age:qk]</rows>
+        <cols>[federated.1ioty7g1i9ia2814nveju0hkoaal].[none:user:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='TS19_01'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1ioty7g1i9ia2814nveju0hkoaal].[none:os:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1ioty7g1i9ia2814nveju0hkoaal].[none:os:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='TS19_01' width='176'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
